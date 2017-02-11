@@ -4,7 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('passport');
 
+const index = require('./routes/index');
+const authRoutes = require('./routes/auth.js');
+const userRoutes = require('./routes/users.js');
+const app = express();
+
+require('dotenv').config();
 var index = require('./routes/index');
 var users = require('./routes/users');
 
