@@ -3,6 +3,7 @@ const router = express.Router();
 
 const authHelpers = require('../auth/auth-helpers');
 const passport = require('../auth/local');
+const models = require('../db/models/index');
 
 router.get('/register', authHelpers.loginRedirect, (req, res)=> {
   res.render('auth/register');
@@ -17,7 +18,7 @@ router.post('/register', (req, res, next)  => {
       res.redirect('/user');
     });
   })
-  .catch((err) => { res.status(500).json({ status: 'error' }); });
+  .catch((err) => { console.log(err); });
 });
 
 router.get('/login', authHelpers.loginRedirect, (req, res)=> {

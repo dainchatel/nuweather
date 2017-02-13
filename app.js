@@ -7,14 +7,15 @@ var bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 
-const index = require('./routes/index');
 const authRoutes = require('./routes/auth.js');
-const userRoutes = require('./routes/users.js');
-const app = express();
+const userRoutes = require('./routes/user.js');
 
 require('dotenv').config();
 var index = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
+// var googleMapsClient = require('@google/maps').createClient({
+//   key: process.env.GM_KEY
+// });
 
 var app = express();
 
@@ -27,6 +28,13 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+  secret: process.env.SECRET_KEY,
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cookieParser());
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
@@ -37,7 +45,9 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/user', user);
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
