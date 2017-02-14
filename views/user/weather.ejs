@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+<% include ../partials/head.ejs %>
+
   <%= town %>
-  <h3><%= weather.currently.temperature %>, <%= weather.currently.summary %></h3>
+  <h3><%= weather.currently.temperature %>°F and <%= weather.currently.summary %></h3>
   <h3><%= weather.daily.summary %></h3>
   <a href='/user'>back</a>
   <form action="<%= '/users/'+town+'/'+zip %>" method='POST'>
   <button type='submit'>Add to favorites</button>
-</form>
+</form></br></br>
 <form action="<%= '/users/weather/'+long+'/'+lat+'/'+town %>" method='GET'>
 <input type='date' name='date' />
-<button type='submit'/>show weather for this date</button>
+<button type='submit'/>check date</button>
 </form>
 </body>
 </html>

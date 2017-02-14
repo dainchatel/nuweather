@@ -1,2 +1,49 @@
+body {
+  background: linear-gradient(to top, #4285f4, white);
+  color: white;
+  height: 100vh;
+  font-family: 'Quicksand';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: lowercase; }
+
+button {
+  width: 30vw;
+  height: 4vh;
+  border: none;
+  background: transparent;
+  text-transform: lowercase;
+  outline: none; }
+
+h3 {
+  text-align: center; }
+
+input {
+  text-transform: lowercase;
+  color: rgba(60, 60, 60, 0.5); }
+
+a {
+  color: white; }
+
+a:hover {
+  color: #e8a82c;
+  text-decoration: none; }
+
+#current {
+  font-size: 4vh;
+  text-align: center; }
+
+.buttonholder {
+  text-align: center; }
+
+.splash {
+  text-align: center; }
+
+.welcome {
+  font-size: 3vh;
+  margin-top: -1vh;
+  margin-bottom: 1.5vh; }
 
 /*# sourceMappingURL=style.css.map */

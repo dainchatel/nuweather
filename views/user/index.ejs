@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Home</title>
-</head>
-<body>
-  <h1>Welcome, <%= user.username %></h1>
+<% include ../partials/head.ejs %>
+
+  <div class='welcome'>Welcome, <%= user.username %></div>
 
 <form action="<%= '/users/weather' %>" method='GET'>
-  <label name='zip'>Zip:
-    <input type='text' name='zip' />
+  <label name='zip'>
+    <input type='text' name='zip' placeholder="ZIP" />
   </label>
   <input type='submit' />
 </form>
-<div id='current'></div>
-<p>FAVORITES:</p>
+<div id='current'></div></br></br>
  <% favorites.forEach(function(favorite) { %>
         <div>
         <form action="<%= '/users/weather' %>" method='GET'>
@@ -23,6 +17,7 @@
         </form>
         </div>
     <% }) %>
+    </br></br>
   <a href="/auth/logout">LOG OUT</a>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -42,7 +37,7 @@ getLocation();
 function getPositionWeather(position) {
   axios.post('/user', {long: position.coords.longitude, lat: position.coords.latitude})
   .then((response) => {
-    x.innerHTML = response.data.weather.temperature+', '+response.data.weather.summary
+    x.innerHTML = 'where you are it\'s '+response.data.weather.temperature+'°F and '+response.data.weather.summary
   })
 
   }

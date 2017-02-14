@@ -1,31 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-  <body>
-   <h1>REGISTER</h1>
-    <main>
-      <div class="container">
-        <div class="row form">
-          <form class="col s10 offset-s1" id="form-font" action="/auth/register" method="post">
-            <div class="register col s6">
+<% include ../partials/head.ejs %>
+
+   <h2>REGISTER</h2>
+
+
+          <form action="/auth/register" method="post">
+<div class='buttonholder'>
               <label>Username:</label>
               <input type="text" name="username"/>
-            </div>
-             <div class="register col s6">
+</div>
+<div class='buttonholder'>
               <label>Password:</label>
               <input type="password" name="password"/>
-            </div>
+</div>
 
-              <div class="col s12 center">
-                <button id="form-font" class="btn black form" type="submit" value="Register">Submit</button>
+              <div class='buttonholder'>
+                <button type="submit" value="Register">Submit</button>
               </div>
-            </div>
+
           </form>
-        </div>
-      </div>
-    </main>
+<a href='/'>back</a>
   </body>
 </html>
