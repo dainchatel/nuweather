@@ -1,0 +1,23 @@
+<% include ../partials/head.ejs %>
+
+   <h2>REGISTER</h2>
+
+
+          <form action="/auth/register" method="post">
+<div class='buttonholder'>
+              <label>Username:</label>
+              <input type="text" name="username"/>
+</div>
+<div class='buttonholder'>
+              <label>Password:</label>
+              <input type="password" name="password"/>
+</div>
+
+              <div class='buttonholder'>
+                <button type="submit" value="Register">Submit</button>
+              </div>
+
+          </form>
+<a href='/'>back</a>
+  </body>
+</html>

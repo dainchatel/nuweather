@@ -1,0 +1,15 @@
+<% include ../partials/head.ejs %>
+
+  <%= town %>
+  <h3><%= weather.currently.temperature %>°F and <%= weather.currently.summary %></h3>
+  <h3><%= weather.daily.summary %></h3>
+  <a href='/user'>back</a>
+  <form action="<%= '/users/'+town+'/'+zip %>" method='POST'>
+  <button type='submit'>Add to favorites</button>
+</form></br></br>
+<form action="<%= '/users/weather/'+long+'/'+lat+'/'+town %>" method='GET'>
+<input type='date' name='date' />
+<button type='submit'/>check date</button>
+</form>
+</body>
+</html>

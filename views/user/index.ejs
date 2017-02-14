@@ -1,0 +1,47 @@
+<% include ../partials/head.ejs %>
+
+  <div class='welcome'>Welcome, <%= user.username %></div>
+
+<form action="<%= '/users/weather' %>" method='GET'>
+  <label name='zip'>
+    <input type='text' name='zip' placeholder="ZIP" />
+  </label>
+  <input type='submit' />
+</form>
+<div id='current'></div></br></br>
+ <% favorites.forEach(function(favorite) { %>
+        <div>
+        <form action="<%= '/users/weather' %>" method='GET'>
+          <input type='hidden' name='zip' value='<%= favorite.zip %>'/>
+          <button type='submit'><%= favorite.town %></button>
+        </form>
+        </div>
+    <% }) %>
+    </br></br>
+  <a href="/auth/logout">LOG OUT</a>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+  //found this snippet on w3 schools to use native HTML geolocation
+const x = document.getElementById("current");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPositionWeather);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+getLocation();
+
+function getPositionWeather(position) {
+  axios.post('/user', {long: position.coords.longitude, lat: position.coords.latitude})
+  .then((response) => {
+    x.innerHTML = 'where you are it\'s '+response.data.weather.temperature+'°F and '+response.data.weather.summary
+  })
+
+  }
+
+</script>
+</body>
+</html>
